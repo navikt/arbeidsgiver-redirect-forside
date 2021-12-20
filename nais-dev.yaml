@@ -1,0 +1,18 @@
+apiVersion: 'nais.io/v1alpha1'
+kind: 'Application'
+metadata:
+  name: arbeidsgiver-redirect-forside
+  namespace: fager
+  labels:
+    team: fager
+spec:
+  image: '{{{image}}}'
+  ingresses:
+    - 'https://arbeidsgiver-q.nav.no/'
+  liveness:
+    path: /internal/ok
+  readiness:
+    path: /internal/ok
+  env:
+    - name: LANDING_PAGE
+      value: 'https://www.dev.nav.no/no/bedrift'

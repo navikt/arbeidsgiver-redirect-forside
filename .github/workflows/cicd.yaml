@@ -46,13 +46,13 @@ jobs:
 #          CLUSTER: dev-gcp
 #          RESOURCE: nais-dev.yaml
 
-#      - name: Deploy prod-sbs
-#        uses: nais/deploy/actions/deploy@v1
-#        env:
-#          IMAGE: ghcr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}
-#          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-#          CLUSTER: prod-gcp
-#          RESOURCE: nais-prod.yaml
+      - name: Deploy prod-sbs
+        uses: nais/deploy/actions/deploy@v1
+        env:
+          IMAGE: ghcr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          CLUSTER: prod-sbs
+          RESOURCE: nais-prod.yaml
 
 #      - name: Deploy prod-gcp
 #        uses: nais/deploy/actions/deploy@v1

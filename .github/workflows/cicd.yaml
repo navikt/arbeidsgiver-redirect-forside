@@ -30,11 +30,18 @@ jobs:
           cache-from: type=registry,ref=${{ env.IMAGE_NAME }}:latest
           cache-to: type=inline
 
-
-      - name: Deploy dev-gcp
+      - name: Deploy dev-sbs
         uses: nais/deploy/actions/deploy@v1
         env:
           IMAGE: ghcr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          CLUSTER: dev-gcp
+          CLUSTER: dev-sbs
           RESOURCE: nais-dev.yaml
+
+#      - name: Deploy dev-gcp
+#        uses: nais/deploy/actions/deploy@v1
+#        env:
+#          IMAGE: ghcr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}
+#          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+#          CLUSTER: dev-gcp
+#          RESOURCE: nais-dev.yaml

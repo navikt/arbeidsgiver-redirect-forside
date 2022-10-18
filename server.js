@@ -13,7 +13,7 @@ const requestListener = function (req, res) {
         res.writeHead(200)
         res.end()
     } else {
-        res.writeHead(301, {
+        res.writeHead(302, {
             'Location': landingPage
         })
         res.end()

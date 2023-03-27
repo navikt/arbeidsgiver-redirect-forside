@@ -1,3 +1,7 @@
-Hvis man går på  https://arbeidsgiver.nav.no, så får man 404. Denne appen redirected til noe mer passende.
+Vi bruker ingresser på formen `https://arbeidsgiver.nav.no/<tjeneste>` flere steder
+i PO Arbeidsgiver. Hvis ingen app er satt opp til å håndtere en slik ingress, så får
+sluttbrukeren en veldig teknisk 404-side.
 
-Pr. nå routes trafikk til arbeidsgiver.nav.no-domenet til sbs-clusteret av bigip by default, med manuelt konfigrerte unntak for de tjenestene som er migrert til gcp. Når default endres til gcp-clusteret, så er det der den trenger å kjøre.
+Denne app-en redirected ukjente ingresser til forsiden for bedrifter på nav.no.
+
+Den hånderer også noen tjenester som er flyttet og har fått ny ingress.

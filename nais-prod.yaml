@@ -13,6 +13,3 @@ spec:
     path: /internal/ok
   readiness:
     path: /internal/ok
-  env:
-    - name: LANDING_PAGE
-      value: 'https://www.nav.no/no/bedrift'

@@ -9,6 +9,8 @@ spec:
   image: '{{{image}}}'
   ingresses:
     - 'https://arbeidsgiver.nav.no/'
+    - 'https://arbeidsgiver.nav.no/permittering-og-omstilling'
+    - 'https://arbeidsgiver.nav.no/permittering-kalkulator'
   liveness:
     path: /internal/ok
   readiness:

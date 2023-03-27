@@ -20,7 +20,13 @@ const rules = [
         to: 'https://www.nav.no/arbeidsgiver/permittere-nedbemanne',
         status: 301,
     },
+    {
+        pattern: /^\/arbeidsgiver-permittering.*/,
+        to: 'https://www.nav.no/arbeidsgiver/permittere',
+        status: 301,
+    },
 ];
+
 
 function log(message, extra) {
     console.log(JSON.stringify({

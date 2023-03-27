@@ -11,6 +11,7 @@ spec:
     - 'https://arbeidsgiver.nav.no/'
     - 'https://arbeidsgiver.nav.no/permittering-og-omstilling'
     - 'https://arbeidsgiver.nav.no/permittering-kalkulator'
+    - 'https://arbeidsgiver.nav.no/arbeidsgiver-permittering'
   liveness:
     path: /internal/ok
   readiness:

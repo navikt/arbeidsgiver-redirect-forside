@@ -6,24 +6,48 @@ const FORSIDE = 'https://www.nav.no/no/bedrift';
 
 const rules = [
     {
-        pattern: /^\/permittering-og-omstilling\/permittering/,
-        status: 301,
+        from: "/permittering-og-omstilling/permittering",
         to: 'https://www.nav.no/arbeidsgiver/permittere',
     },
     {
-        pattern: /^\/permittering-og-omstilling\/streik/,
-        status: 301,
+        from: "/permittering-og-omstilling/streik",
         to: 'https://www.nav.no/arbeidsgiver/permittere#streik',
     },
     {
-        pattern: /^\/permittering-og-omstilling.*/,
+        from: "/permittering-og-omstilling",
         to: 'https://www.nav.no/arbeidsgiver/permittere-nedbemanne',
-        status: 301,
     },
     {
-        pattern: /^\/arbeidsgiver-permittering.*/,
+        from: "/arbeidsgiver-permittering",
         to: 'https://www.nav.no/arbeidsgiver/permittere',
-        status: 301,
+    },
+    {
+        from: "/inkludering",
+        to: 'https://www.nav.no/arbeidsgiver/inkludere',
+    },
+    {
+        from: "/veiviserarbeidsgiver/inkludering",
+        to: 'https://www.nav.no/arbeidsgiver/inkludere',
+    },
+    {
+        from: "/veiviserarbeidsgiver/tema/hvordan-gar-du-frem-for-a-inkludere",
+        to: 'https://www.nav.no/arbeidsgiver/inkludere#prosessen',
+    },
+    {
+        from: "/veiviserarbeidsgiver/tema/hvordan-kan-nav-hjelpe-med-inkludering",
+        to: 'https://www.nav.no/arbeidsgiver/inkludere',
+    },
+    {
+        from: "/tilrettelegging",
+        to: "https://www.nav.no/arbeidsgiver/redusere-sykefravar",
+    },
+    {
+        from: "/veiviserarbeidsgiver/tilrettelegging",
+        to: "https://www.nav.no/arbeidsgiver/redusere-sykefravar",
+    },
+    {
+        from: "/veiviserarbeidsgiver",
+        to: "https://www.nav.no/arbeidsgiver/inkludere",
     },
 ];
 
@@ -44,9 +68,9 @@ const requestListener = function (req, res) {
     } 
 
     for (const rule of rules) {
-        if (rule.pattern.test(req.url)) {
+        if (rule.from.startsWith(req.url)) {
             log("rule redirection", { target: rule.to })
-            res.writeHead(rule.status, {
+            res.writeHead(301, {
                 'Location': rule.to,
             })
             res.end()

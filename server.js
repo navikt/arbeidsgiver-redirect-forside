@@ -68,7 +68,7 @@ const requestListener = function (req, res) {
     } 
 
     for (const rule of rules) {
-        if (rule.from.startsWith(req.url)) {
+        if (req.url.startsWith(rule.from)) {
             log("rule redirection", { target: rule.to })
             res.writeHead(301, {
                 'Location': rule.to,

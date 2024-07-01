@@ -1,4 +1,4 @@
-FROM gcr.io/distroless/nodejs20-debian11
+FROM gcr.io/distroless/nodejs22-debian12
 EXPOSE 8080
 ENV NODE_ENV=production
 WORKDIR /app

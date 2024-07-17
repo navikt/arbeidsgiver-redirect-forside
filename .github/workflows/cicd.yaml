@@ -2,6 +2,8 @@ name: ci/cd
 on:
   push:
   workflow_dispatch:
+  schedule:
+    - cron: '0 6 * * 1' # bygg nytt image hver mandag morgen
 
 jobs:
   cicd:
@@ -17,26 +19,21 @@ jobs:
         id: dockerpush
         with:
           team: fager
-          tag: ${{ github.sha }}
           project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
           identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
 
       - name: Deploy dev-gcp
         uses: nais/deploy/actions/deploy@v1
         env:
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          IMAGE: ${{ steps.dockerpush.outputs.image }}
           CLUSTER: dev-gcp
           RESOURCE: nais-dev.yaml
           PRINT_PAYLOAD: true
-          VAR: commit=${{ github.sha }}
+          VAR: image=${{ steps.dockerpush.outputs.image }}
 
       - name: Deploy prod-gcp
         uses: nais/deploy/actions/deploy@v1
         env:
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          IMAGE: ${{ steps.dockerpush.outputs.image }}
           CLUSTER: prod-gcp
           RESOURCE: nais-prod.yaml
           PRINT_PAYLOAD: true
-          VAR: commit=${{ github.sha }}
+          VAR: image=${{ steps.dockerpush.outputs.image }}

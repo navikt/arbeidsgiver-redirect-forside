@@ -15,7 +15,6 @@ spec:
     - 'https://arbeidsgiver.nav.no/veiviserarbeidsgiver'
     - 'https://arbeidsgiver.nav.no/inkludering'
     - 'https://arbeidsgiver.nav.no/tilrettelegging'
-    - 'https://arbeidsgiver.nav.no/endre-kontonummer'
   liveness:
     path: /internal/ok
   readiness:

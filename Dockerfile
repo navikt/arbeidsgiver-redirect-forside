@@ -1,6 +1,6 @@
-FROM gcr.io/distroless/nodejs22-debian12
+# https://sikkerhet.nav.no/docs/verktoy/chainguard-dockerimages/#tilgjenglige-images
+FROM europe-north1-docker.pkg.dev/cgr-nav/pull-through/nav.no/node:22
 EXPOSE 8080
 ENV NODE_ENV=production
-WORKDIR /app
-COPY ["server.js", "./"]
+COPY server.js ./
 CMD ["server.js"]

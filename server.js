@@ -2,7 +2,7 @@
 const http = require('http')
 
 
-const FORSIDE = 'https://www.nav.no/no/bedrift';
+const FORSIDE = 'https://www.nav.no/arbeidsgiver';
 
 const rules = [
     {

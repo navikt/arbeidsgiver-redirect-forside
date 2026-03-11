@@ -59,6 +59,9 @@ function log(message, extra) {
     }));
 }
 
+function pathname(request) {
+    return new URL(`http://localhost${request.url}`).pathname
+}
 
 const requestListener = function (req, res) {
     if (req.url === '/internal/ok') {
@@ -78,7 +81,7 @@ const requestListener = function (req, res) {
         }
     }
 
-    log("fallback redirection", { target: FORSIDE })
+    log("fallback redirection", { src: pathname(req), target: FORSIDE })
     res.writeHead(302, {
         'Location': FORSIDE,
     })
